@@ -5,7 +5,7 @@ const cluster = require("cluster");
 const os = require("os");
 
 const cpus = os.cpus().length;
-const port = 8080;
+const port = 443;
 const index = fs.readFileSync("./index.html");
 
 if (cluster.isMaster) {
