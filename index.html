@@ -42,48 +42,6 @@
     </div>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script>
-      window.onload = () => {
-        let info = document.getElementById("info");
-
-        let chart = Highcharts.chart("chart", {
-          exporting: {
-            enabled: true,
-          },
-          chart: {
-            type: "area",
-          },
-          title: {
-            text: "Layer7 DSTAT",
-          },
-          xAxis: {
-            type: "datetime",
-          },
-          yAxis: {
-            title: {
-              text: "",
-            },
-          },
-          series: [
-            {
-              name: "Requests",
-              data: [],
-            },
-          ],
-        });
-
-        info.innerText = "Capturing requests from " + location.host + "/dstat";
-
-        let ws = new WebSocket(
-          (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/"
-        );
-
-        ws.onmessage = (event) => {
-          let requests = Number(event.data);
-          let time = new Date().getTime();
-          chart.series[0].addPoint([time, requests], true, chart.series[0].points.length > 60);
-        };
-      };
-    </script>
+    <script src="index.js"></script> <!-- Add the script tag for your index.js file here -->
   </body>
 </html>
